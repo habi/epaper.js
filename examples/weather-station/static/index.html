@@ -41,12 +41,12 @@
                 if(!apiKey) {
                     console.error(`OpenWeather API Key not defined. Please create api-key.js and export 'apiKey' variable`);
                 }
-                const responce = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&units=imperial&appid=${apiKey}`)
+                const responce = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},ch&units=metric&appid=${apiKey}`)
                 return await responce.json();
             }
 
             async function update() {
-                const weatherData = await getWeather("02130");
+                const weatherData = await getWeather("3097");
                 const epoch = weatherData.dt;
                 const isNight = () => epoch >= weatherData.sys.sunset;
 
@@ -59,16 +59,16 @@
 
                 const date = new Date();
                 const days = [
-                    "Sunday",
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday"
+                    "Sunntig",
+                    "Mäntig",
+                    "Dsischti",
+                    "Mittwuch",
+                    "Donnschti",
+                    "Friti",
+                    "Samschti"
                 ];
                 getDateDayElement().innerHTML = days[date.getDay()];
-                getDateNumbersElement().innerHTML=`${date.getMonth() + 1}/${date.getDate()}`;
+                getDateNumbersElement().innerHTML=`${date.getDate()}. ${date.getMonth() + 1}.`;
             }
 
             const afterPaint = (cb) => requestAnimationFrame(() => requestAnimationFrame(cb));
